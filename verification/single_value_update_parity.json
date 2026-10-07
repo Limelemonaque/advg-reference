@@ -1,0 +1,47 @@
+{
+  "status": "pass",
+  "version": "0.4.0",
+  "date": "2026-10-07",
+  "checks": [
+    {
+      "task": "lq",
+      "dt": 0.02,
+      "critic_calls": 3,
+      "optimizer_steps": 9,
+      "all_online_parameters_bitwise_equal": true,
+      "all_adam_states_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "lq",
+      "dt": 0.005,
+      "critic_calls": 3,
+      "optimizer_steps": 9,
+      "all_online_parameters_bitwise_equal": true,
+      "all_adam_states_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.02,
+      "critic_calls": 3,
+      "optimizer_steps": 9,
+      "all_online_parameters_bitwise_equal": true,
+      "all_adam_states_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.005,
+      "critic_calls": 3,
+      "optimizer_steps": 9,
+      "all_online_parameters_bitwise_equal": true,
+      "all_adam_states_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    }
+  ],
+  "comparison": "Archived v0.3.0 implementation, skipping only its second, third and fourth V optimizer calls per update.",
+  "fixture_source": "Archived implementation after that one controlled modification; not generated from the v0.4 learner.",
+  "upstream_archive": "advg-reference-0.3.0-readme.zip",
+  "upstream_archive_sha256": "53967fe3ff60c596d67b6e08cbbccc0a8e399c152b15e47d5c3815de10945017"
+}

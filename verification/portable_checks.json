@@ -1,0 +1,153 @@
+{
+  "status": "pass",
+  "date": "2026-10-07",
+  "version": "0.4.0",
+  "scope": "Extracted outside parent source using the existing dependency environment; not a fresh dependency installation.",
+  "archive_checked": "advg-single-value-extraction-check.zip",
+  "archive_sha256": "7f810f76d8b3fd3041352fbcd97c96f459fdd5c546222dbc095ee9fbb5e94494",
+  "extracted_directory": "C:\\Users\\Fangh\\AppData\\Local\\Temp\\advg-single-value-archive-_6z2t1ts\\advg-reference",
+  "extracted_file_hashes_verified": true,
+  "imports_resolved_to_extracted_directory": true,
+  "pytest_output": "........................                                                 [100%]\n24 passed in 6.86s",
+  "complete_readme_loop_checks": [
+    {
+      "task": "lq",
+      "dt": 0.02,
+      "critic_calls": 32,
+      "actor_updates": 32,
+      "optimizer_steps": 96
+    },
+    {
+      "task": "lq",
+      "dt": 0.005,
+      "critic_calls": 32,
+      "actor_updates": 32,
+      "optimizer_steps": 96
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.02,
+      "critic_calls": 32,
+      "actor_updates": 32,
+      "optimizer_steps": 96
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.005,
+      "critic_calls": 32,
+      "actor_updates": 32,
+      "optimizer_steps": 96
+    }
+  ],
+  "readme_fixture_overrides": "Short budgets, horizon .2 and actor hold zero only in these checks; README code itself is unchanged.",
+  "relative_documentation_links": "all resolve",
+  "cli_smoke_runs": [
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.02,
+      "elapsed_seconds": 0.45269539998844266,
+      "evaluation_transitions": 4000,
+      "final_curve_return": -7.084108436799436,
+      "final_heldout_return": -6.17265866838209,
+      "initial_curve_return": -7.084108436799436,
+      "optimizer_steps": 64,
+      "parameter_counts": {
+        "actor": 17794,
+        "q": 17921,
+        "value": 17665
+      },
+      "seed": 10101,
+      "status": "completed",
+      "task": "CoupledLQ-v1",
+      "training_physical_time": 5.12,
+      "training_transitions": 256
+    },
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.005,
+      "elapsed_seconds": 1.951959100086242,
+      "evaluation_transitions": 20000,
+      "final_curve_return": -8.396956470475542,
+      "final_heldout_return": -6.343252004493988,
+      "initial_curve_return": -8.396956470475542,
+      "optimizer_steps": 64,
+      "parameter_counts": {
+        "actor": 17794,
+        "q": 17921,
+        "value": 17665
+      },
+      "seed": 10101,
+      "status": "completed",
+      "task": "CoupledLQ-v1",
+      "training_physical_time": 1.44,
+      "training_transitions": 288
+    },
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.02,
+      "elapsed_seconds": 0.2721253000199795,
+      "evaluation_transitions": 1600,
+      "final_curve_return": -16.92302857359098,
+      "final_heldout_return": -15.683356204515833,
+      "initial_curve_return": -16.92302857359098,
+      "optimizer_steps": 64,
+      "parameter_counts": {
+        "actor": 17537,
+        "q": 17665,
+        "value": 17537
+      },
+      "seed": 949101,
+      "status": "completed",
+      "task": "StochasticPendulum-v1",
+      "training_physical_time": 5.12,
+      "training_transitions": 256
+    },
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.005,
+      "elapsed_seconds": 0.8053317999001592,
+      "evaluation_transitions": 8000,
+      "final_curve_return": -18.352349287091407,
+      "final_heldout_return": -17.055548759607845,
+      "initial_curve_return": -18.352349287091407,
+      "optimizer_steps": 64,
+      "parameter_counts": {
+        "actor": 17537,
+        "q": 17665,
+        "value": 17537
+      },
+      "seed": 949101,
+      "status": "completed",
+      "task": "StochasticPendulum-v1",
+      "training_physical_time": 1.44,
+      "training_transitions": 288
+    }
+  ],
+  "source_sha256": {
+    "advg_reference/__init__.py": "d2c1df201de882b1b03ab5b6c7356a8d1facb72a7c8f7c80356d36f2a8de3ddf",
+    "advg_reference/config.py": "8168727771584402c1e13266575e135a58b171dedb048fa6a938c8a64cefcccf",
+    "advg_reference/coupled_lq_math.py": "196f502aa0934a247d17513f89155a3a4197974d32ff166411251fe3a2e04e02",
+    "advg_reference/environments.py": "f21a2056f6f7b5fff671c44997fcbe830827d1aaef94d84b08e6b11393d59f29",
+    "advg_reference/learner.py": "e4179e39664bf7f2ac434dfa82a5163666a7bd85c46f09b2bf53d83bc1731a14",
+    "advg_reference/replay.py": "789aa29badbd43219ef72cd4d9922b0eb0e8891052763d780dee6c0ff1b500d3",
+    "advg_reference/tasks.py": "2609148201934e3713c2798e2771e6c9edfa6ca934677c9b548778c51bfaa0b8",
+    "configs/algorithm.json": "50408a964eb1e2a6635c81f277dda82ebc5790aa6d09c578eb8c17b66c420ab1",
+    "configs/lq.json": "660754667890ea606f834de502867cd727f142e0d1cf4f58042b9eec4a5e0ce6",
+    "configs/pendulum.json": "53e44af677338cad443c5f88d12c527469f9bcf8703af5e2d0b8b54eab738695",
+    "examples/__init__.py": "e1b7950331a485da142fa0f007364866d9a679fd991ba592ca4f2a6b9b59595a",
+    "examples/train.py": "67f59111b6540afdc5c1dd5b9ffe78e1fe078dab7ff933d6509d9351375ec464",
+    "prepare_release.py": "9b88237930a859586443dc2ccd87dbc5fd469b3b8c95f124fea372189f687404",
+    "tests/test_neural.py": "1c1e09a7687c86dbbf45fe34a10158b9aa2d09b4d8575097415be47517c6e097",
+    "tests/test_release.py": "208a304539933e9c12e4dc70cd5c45621e8c325d987b6c6772c42e9ac0866157"
+  },
+  "wheel_build": {
+    "status": "pass",
+    "artifact": "advg_reference-0.4.0-py3-none-any.whl",
+    "command": "python -m pip wheel . --no-deps --no-build-isolation",
+    "sha256": "130cda94b298a1466986051701d7d316c977bf0ef7a226c1e9f5a90750f2d57c"
+  }
+}

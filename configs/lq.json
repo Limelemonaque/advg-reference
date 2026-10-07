@@ -1,0 +1,8 @@
+{
+  "task": "CoupledLQ-v1",
+  "seed": 10101,
+  "dt": 0.02,
+  "microsteps": 1,
+  "horizon": 10.0,
+  "noise_std": 0.5
+}

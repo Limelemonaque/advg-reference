@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "task": "lq",
+      "dt": 0.02,
+      "behavior_actions_bitwise_equal": true,
+      "optimizer_calls": 3,
+      "all_online_parameters_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "lq",
+      "dt": 0.005,
+      "behavior_actions_bitwise_equal": true,
+      "optimizer_calls": 3,
+      "all_online_parameters_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.02,
+      "behavior_actions_bitwise_equal": true,
+      "optimizer_calls": 3,
+      "all_online_parameters_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    },
+    {
+      "task": "pendulum",
+      "dt": 0.005,
+      "behavior_actions_bitwise_equal": true,
+      "optimizer_calls": 3,
+      "all_online_parameters_bitwise_equal": true,
+      "actor_hold_disabled_only_in_fixture": true
+    }
+  ],
+  "comparison": "Preserved v0.2 post-critic/current-value update applied identically to both tasks; redundant synchronized V copy removed.",
+  "upstream_archive_sha256": "b3fc46e56bbb853436a34d970a5de1a27582d0c1a94490513c7a2652d771f2b0"
+}

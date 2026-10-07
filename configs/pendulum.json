@@ -1,0 +1,8 @@
+{
+  "task": "StochasticPendulum-v1",
+  "seed": 949101,
+  "dt": 0.02,
+  "microsteps": 2,
+  "horizon": 4.0,
+  "noise_std": 0.5
+}

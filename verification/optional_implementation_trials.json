@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-07",
+  "kind": "Documentation summary of existing trials; no new experiment.",
+  "current_reference_version": "0.4.0",
+  "current_default_value_passes": 1,
+  "optional_changes_enabled_in_current_learner": false,
+  "multiple_value_passes": {
+    "evidence": "Matched single-pass/four-pass comparison; same training seeds, settings and final evaluation bank.",
+    "source": "verification/single_value_benchmarks.json",
+    "source_sha256": "6e3ef5572a8c18c9d73da71a36645db27c649505d1a766a78c586ae6a14e7753",
+    "summary": [
+      {
+        "task": "lq",
+        "training_seeds": 2,
+        "initial_return_mean": -8.078679640802534,
+        "single_value_pass_final_return_mean": -4.057087984927067,
+        "four_value_pass_final_return_mean": -3.75955653662466,
+        "single_minus_four_pass_return_mean": -0.2975314483024074,
+        "improved_training_seeds": 2
+      },
+      {
+        "task": "pendulum",
+        "training_seeds": 2,
+        "initial_return_mean": -18.035164386596897,
+        "single_value_pass_final_return_mean": -7.9995209710040704,
+        "four_value_pass_final_return_mean": -8.815674777652418,
+        "single_minus_four_pass_return_mean": 0.8161538066483476,
+        "improved_training_seeds": 2
+      }
+    ],
+    "limitation": "Two training seeds per task; no diffusion-model trial."
+  },
+  "slowly_updated_value_targets": {
+    "evidence": "Earlier neural development recipes used a moving-average value copy.",
+    "source": "verification/shared_benchmarks.json",
+    "source_sha256": "672f49901ac94d575b0a5d25d4c359ece5d42c54a18f213893a6c881d6a589d2",
+    "trials": [
+      {
+        "run": "runs/shared-screen-lq-s10101",
+        "task": "CoupledLQ-v1",
+        "seed": 10101,
+        "final_return": -3.557061113565763,
+        "target_tau": 0.005,
+        "value_passes": 1,
+        "instrument": "behavior_centered",
+        "actor_order": "before_critics",
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      },
+      {
+        "run": "runs/shared-screen-pendulum-s949101",
+        "task": "StochasticPendulum-v1",
+        "seed": 949101,
+        "final_return": -11.425633744605788,
+        "target_tau": 0.005,
+        "value_passes": 1,
+        "instrument": "behavior_centered",
+        "actor_order": "before_critics",
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      },
+      {
+        "run": "runs/shared-confirm-lq-s20701",
+        "task": "CoupledLQ-v1",
+        "seed": 20701,
+        "final_return": -3.40837303155544,
+        "target_tau": 0.005,
+        "value_passes": null,
+        "instrument": null,
+        "actor_order": null,
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      },
+      {
+        "run": "runs/shared-confirm-lq-s20702",
+        "task": "CoupledLQ-v1",
+        "seed": 20702,
+        "final_return": -3.5322217181120674,
+        "target_tau": 0.005,
+        "value_passes": null,
+        "instrument": null,
+        "actor_order": null,
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      },
+      {
+        "run": "runs/shared-confirm-pendulum-s20701",
+        "task": "StochasticPendulum-v1",
+        "seed": 20701,
+        "final_return": -9.685219909618821,
+        "target_tau": 0.005,
+        "value_passes": null,
+        "instrument": null,
+        "actor_order": null,
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      },
+      {
+        "run": "runs/shared-confirm-pendulum-s20702",
+        "task": "StochasticPendulum-v1",
+        "seed": 20702,
+        "final_return": -14.025182868122474,
+        "target_tau": 0.005,
+        "value_passes": null,
+        "instrument": null,
+        "actor_order": null,
+        "scope": "Historical development recipe; not a matched target-network ablation."
+      }
+    ],
+    "limitation": "Instrument, actor timing and other training choices also differed; no isolated benefit is established."
+  },
+  "earlier_simulator_assisted_bundle": {
+    "evidence": "Earlier successful combined recipe, separate from the v0.4 one-pass learner.",
+    "components": [
+      "Two independent actions from the same state with common simulator randomness",
+      "Frozen critic-state normalization from training warmup",
+      "Value fitting at every observed window start against its remaining TD suffix"
+    ],
+    "implementation_details": {
+      "value_passes": 2,
+      "normalization_std_floor": 0.05,
+      "normalization_scope": "Value and advantage state inputs; actor inputs and physical action units unchanged.",
+      "value_target_scope": "Stopped advantage-corrected suffix returns; terminal masks retained.",
+      "branch_pairing": "One half of the live F-output difference gradient paired with its own stopped response difference.",
+      "acquisition": "Both branches charged; only main branch continues the multi-step value trajectory."
+    },
+    "task": "NoisyReacher-v1",
+    "noise_std": 1.0,
+    "horizon": 0.5,
+    "dt": 0.02,
+    "micro_dt": 0.01,
+    "training_transitions_per_policy": 100000,
+    "main_training_transitions_per_policy": 50000,
+    "branch_training_transitions_per_policy": 50000,
+    "comparator": "Released full-window CT-DDPG with four value passes",
+    "evaluation_episodes_per_policy": 100,
+    "evaluation_seed_base": 9871000,
+    "mean_candidate_return": -0.06539666617868245,
+    "mean_baseline_return": -0.0677142217204351,
+    "training_seed_pairs": [
+      {
+        "training_seed": 2026092501,
+        "candidate_return": -0.06704193998033373,
+        "baseline_return": -0.06891886130017374,
+        "paired_difference": 0.0018769213198400192
+      },
+      {
+        "training_seed": 2026092502,
+        "candidate_return": -0.06483574840218376,
+        "baseline_return": -0.06580669074014481,
+        "paired_difference": 0.0009709423379610505
+      },
+      {
+        "training_seed": 2026092503,
+        "candidate_return": -0.06482092280319245,
+        "baseline_return": -0.06902702770620751,
+        "paired_difference": 0.004206104903015068
+      },
+      {
+        "training_seed": 2026092504,
+        "candidate_return": -0.06506755470686602,
+        "baseline_return": -0.06723624151349052,
+        "paired_difference": 0.0021686868066244924
+      },
+      {
+        "training_seed": 2026092505,
+        "candidate_return": -0.06521716500083631,
+        "baseline_return": -0.06758228734215893,
+        "paired_difference": 0.0023651223413226202
+      }
+    ],
+    "limitations": [
+      "Combined recipe; individual component benefits were not isolated.",
+      "Other choices included two value fits, lagged value targets and a different actor schedule/order.",
+      "No direct comparison with v0.4, no diffusion-model experiment, and no complete standard-setting confirmation."
+    ],
+    "provenance": [
+      {
+        "path": "notes/research/advg_retry_20260924.md",
+        "sha256": "5c9576517e2084bd956a475593ce50db8064a914c66a8ab10dceff61bbbe1e40"
+      },
+      {
+        "path": "output/iclr/advg_retry_20260924/reacher/confirmation_short_horizon/confirmation_comparison.json",
+        "sha256": "175e32eb15c513b0393b8c96ba18b5a712d18e73e8845045adee2ac5a66c46f4"
+      },
+      {
+        "path": "output/iclr/advg_retry_20260924/reacher/confirmation_short_horizon/criterion_decision.json",
+        "sha256": "aa5f482a1441b7940d61d37c16912da12a64133ef341f047b5e6aad6ea6537ca"
+      }
+    ],
+    "provenance_paths_are_identifiers_not_runtime_dependencies": true
+  },
+  "new_simulator_transitions": 0
+}

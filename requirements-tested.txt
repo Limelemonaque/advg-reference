@@ -1,0 +1,7 @@
+# Versions used for the local CPU verification. Install the CPU Torch wheel
+# first if desired; see README.md. This file does not pin transitive packages.
+torch==2.5.1
+numpy==1.26.4
+scipy==1.14.1
+gymnasium==1.0.0
+pytest==8.3.5

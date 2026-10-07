@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "advg-reference"
+version = "0.4.0"
+description = "One shared neural AdvG recipe for LQ and Pendulum"
+requires-python = ">=3.10,<3.13"
+dependencies = ["torch>=2.5,<3", "numpy>=1.26,<3", "scipy>=1.14,<2", "gymnasium>=1,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+
+[tool.setuptools.packages.find]
+include = ["advg_reference*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

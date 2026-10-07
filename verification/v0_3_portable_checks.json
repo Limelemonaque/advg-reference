@@ -1,0 +1,79 @@
+{
+  "status": "pass",
+  "date": "2026-10-07",
+  "scope": "Extraction outside parent source tree using existing dependency environment; not a fresh dependency install.",
+  "archive_checked": "advg-shared-extraction-check.zip",
+  "archive_sha256": "e98fe107bfccebd755a0f442a9f3510d4911e91f54128a6895a89913e75c5546",
+  "extracted_directory": "C:\\Users\\Fangh\\AppData\\Local\\Temp\\advg-neural-archive-68rgobw0\\advg-reference",
+  "imports_resolved_to_extracted_directory": true,
+  "extracted_file_hashes_verified": true,
+  "version": "0.3.0",
+  "pytest_output": "........................                                                 [100%]\n24 passed in 4.69s",
+  "cli_smoke_runs": [
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.005,
+      "elapsed_seconds": 2.5473706999327987,
+      "evaluation_transitions": 20000,
+      "final_curve_return": -8.396956470475542,
+      "final_heldout_return": -6.343252004493988,
+      "initial_curve_return": -8.396956470475542,
+      "optimizer_steps": 160,
+      "parameter_counts": {
+        "actor": 17794,
+        "q": 17921,
+        "value": 17665
+      },
+      "seed": 10101,
+      "status": "completed",
+      "task": "CoupledLQ-v1",
+      "training_physical_time": 1.44,
+      "training_transitions": 288
+    },
+    {
+      "actor_updates": 0,
+      "critic_calls": 32,
+      "dt": 0.005,
+      "elapsed_seconds": 0.9587846999056637,
+      "evaluation_transitions": 8000,
+      "final_curve_return": -18.352349287091407,
+      "final_heldout_return": -17.055548759607845,
+      "initial_curve_return": -18.352349287091407,
+      "optimizer_steps": 160,
+      "parameter_counts": {
+        "actor": 17537,
+        "q": 17665,
+        "value": 17537
+      },
+      "seed": 949101,
+      "status": "completed",
+      "task": "StochasticPendulum-v1",
+      "training_physical_time": 1.44,
+      "training_transitions": 288
+    }
+  ],
+  "source_sha256": {
+    "advg_reference/__init__.py": "a9ff49dde0464d388f1c193c132b5218d0f01115f224a22372752fdf73b16530",
+    "advg_reference/config.py": "8168727771584402c1e13266575e135a58b171dedb048fa6a938c8a64cefcccf",
+    "advg_reference/coupled_lq_math.py": "196f502aa0934a247d17513f89155a3a4197974d32ff166411251fe3a2e04e02",
+    "advg_reference/environments.py": "f21a2056f6f7b5fff671c44997fcbe830827d1aaef94d84b08e6b11393d59f29",
+    "advg_reference/learner.py": "a197a0970b67ce91fb4b1d4d2c9ed2294b377f3d223789dd6f55ca3a1f72138f",
+    "advg_reference/replay.py": "789aa29badbd43219ef72cd4d9922b0eb0e8891052763d780dee6c0ff1b500d3",
+    "advg_reference/tasks.py": "2609148201934e3713c2798e2771e6c9edfa6ca934677c9b548778c51bfaa0b8",
+    "configs/algorithm.json": "50408a964eb1e2a6635c81f277dda82ebc5790aa6d09c578eb8c17b66c420ab1",
+    "configs/lq.json": "660754667890ea606f834de502867cd727f142e0d1cf4f58042b9eec4a5e0ce6",
+    "configs/pendulum.json": "53e44af677338cad443c5f88d12c527469f9bcf8703af5e2d0b8b54eab738695",
+    "examples/__init__.py": "e1b7950331a485da142fa0f007364866d9a679fd991ba592ca4f2a6b9b59595a",
+    "examples/train.py": "67f59111b6540afdc5c1dd5b9ffe78e1fe078dab7ff933d6509d9351375ec464",
+    "prepare_release.py": "ba5e9339428050a57be6dcf9d2f1ea673cbcdeba3ec03e31e36e55833ec61d75",
+    "tests/test_neural.py": "7ead4e022ae2b28f09ef60b1601da3accf3704bc21dd8588d150565581489f5a",
+    "tests/test_release.py": "0725738ce52c983c456fabebd313a13d203ed3bac402628ec5b773aebe3380e3"
+  },
+  "wheel_build": {
+    "status": "pass",
+    "artifact": "advg_reference-0.3.0-py3-none-any.whl",
+    "command": "python -m pip wheel . --no-deps --no-build-isolation",
+    "sha256": "5f640cb6a73de381b6c1fc6f1194711b31b066a5a682ba6e3cf7162a0d1d5add"
+  }
+}
