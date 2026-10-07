@@ -53,7 +53,7 @@ review `git status` and `git diff`, then add, commit and push the intended files
 From the package directory, use a new output filename:
 
 ```text
-python prepare_release.py --output ../tmp/advg-reference-0.4.0-options.zip
+python prepare_release.py --output ../tmp/advg-reference-0.4.0-readme.zip
 ```
 
 The helper refuses to overwrite an existing archive. It includes source,

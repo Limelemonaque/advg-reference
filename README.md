@@ -128,11 +128,9 @@ the complete schedule and formulas.
 
 ## 4. Connect another simulator
 
-For a diffusion project, first define **what the actor controls**, what
-information forms its state, and what reward expresses the objective. For
-example, an action could control a guidance coefficient. Include conditioning
-information and diffusion time in the state when they affect future dynamics.
-These choices define the environment supplied to AdvG.
+For a new task, define the state observation, bounded action and reward.
+Include any time or conditioning information needed to determine future
+dynamics, then provide these through the simulator adapter below.
 
 The following is a complete collection and training loop using an included
 environment. Run it from this README's directory after installation. For your
@@ -210,27 +208,7 @@ The included `ParallelTasks` recognizes only LQ and Pendulum. A new task needs
 its own adapter; changing the task name in JSON alone does not implement it.
 Copy a task file for your environment's metadata and keep the shared algorithm
 file for the initial pilot. [ADAPTING.md](ADAPTING.md) explains custom neural
-architectures, structured observations and a small diffusion pilot.
-
-## What has been checked
-
-With the shared defaults at `dt=0.02`, two training seeds per task improved
-over their initial policies after 100,000 training transitions. Each initial
-and final policy was evaluated on the same 50-episode bank. The table averages
-over the two training seeds; higher discounted return is better.
-
-| Task | Initial mean return | Final mean return |
-|---|---:|---:|
-| LQ | -8.079 | -4.057 |
-| Stochastic Pendulum | -18.035 | -8.000 |
-
-These results use the one-value-update recipe. With the same training seeds and
-evaluation bank, the earlier four-value-update version averaged -3.760 on LQ
-and -8.816 on Pendulum. One update performed slightly worse on LQ and better on
-Pendulum in this small comparison; neither task needed four updates to learn.
-Two seeds per task do not establish a general ranking or performance on a
-diffusion-model project. Full training was checked at `dt=0.02`; optimizer
-fixtures and smoke runs also cover `dt=0.005`.
+architectures, structured observations and planning an initial pilot.
 
 ## Optional refinements after the first pilot
 
@@ -242,7 +220,7 @@ these changes automatically.
 
 | Choice | What changes and why it may help | What we have checked |
 |---|---|---|
-| **More value fitting per update** | Take several value-optimizer steps on the same sampled batch and frozen target. This gives the value network more fitting work before the next training call. | Four passes improved the mean LQ result but reduced the mean Pendulum result relative to one pass in the matched comparison above. |
+| **More value fitting per update** | Take several value-optimizer steps on the same sampled batch and frozen target. This gives the value network more fitting work before the next training call. | Four passes improved the mean LQ result but reduced the mean Pendulum result relative to one pass in the [matched comparison](VERIFICATION.md#matched-training-comparison). |
 | **A slowly updated value target** | Keep a second value network whose weights follow a moving average of the learned value network. Use that copy for bootstrap targets to reduce rapid changes in the training labels. | Earlier neural recipes and development runs used this approach. Other choices also differed, so those results do not isolate its benefit. |
 | **Fixed normalization of critic inputs** | Estimate observation means and standard deviations from training warmup data, then freeze the transform used by both critics. This may help when state coordinates have very different scales; the neural features remain trainable. | Tried in earlier Reacher experiments together with the next option and paired simulator rollouts. Their individual effects were not isolated. |
 | **Fit value at every observed start in a window** | Give each state in a sampled window a target built from its remaining rewards and advantage corrections. This trains the value network at more of the states used by the advantage update, including near termination. | Tried in the same Reacher work. These overlapping targets reuse the existing trajectory; they are not additional independent samples. |
@@ -263,14 +241,14 @@ That branching approach, fixed input normalization and value fitting at all
 window starts were used together in an earlier successful noisy Reacher
 recipe. It also used other training settings, including two value passes.
 The result supports that combination in its tested setting; it does not show
-that any one component improves this one-pass reference or a diffusion model.
+that any one component improves this one-pass reference or a new application.
 [The optional-trial record](verification/optional_implementation_trials.json)
 identifies the measurements and their scope.
 
 Evaluate an optional change against the unchanged one-pass baseline using the
 same training seeds, evaluation bank and charged acquisition budget. Start with
 one change at a time and record it explicitly. These choices do not need to be
-resolved before running the supplied examples or the first diffusion pilot.
+resolved before running the supplied examples or the first application pilot.
 
 For implementation details, start with [advg_reference/learner.py](advg_reference/learner.py)
 and [examples/train.py](examples/train.py). [VERIFICATION.md](VERIFICATION.md)
